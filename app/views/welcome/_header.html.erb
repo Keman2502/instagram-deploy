@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+  <%= link_to 'Instagram' , root_path , class:"navbar-brand ms-4"%>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+    <% if user_signed_in?%>
+      <li class="nav-item me-4 pt-2">
+          <%= link_to 'Add Post', new_post_path , class: "nav-link btn btn-primary"%>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= image_tag(current_user.avatar_thumbnail) %>
+        </a>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <li style= "color:"><a><%= link_to 'Edit Profile', edit_user_registration_path , class: "nav-link dropdown-item"%> </a></li>
+        <li><a><%= link_to 'Sign Out', destroy_user_session_path  , method: :delete, class: "nav-link dropdown-item"%></a></li>
+      </ul>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_registration_path , class: "nav-link"%>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+</nav>
+
+
+
+
+

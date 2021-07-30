@@ -1,0 +1,19 @@
+<%#
+<div class="container profile">
+<% if user_signed_in?%>
+  <%# <%= image_tag(current_user.avatar_thumbnail) %>
+<%# <%end %>
+<%# </div> %>
+
+<div class="container mypost">
+<% @post.each do |post| %>
+<div class="card">
+  <%= image_tag(post.thumbnail(0) , class: "img-thumbnail center")%>
+  <div class="card-body">
+    <p class="card-text"><%= post.body %></p>
+    <%= link_to 'Show', post ,class:"btn btn-dark b1" %>
+  </div>
+</div>
+<% end%>
+</div>
+
