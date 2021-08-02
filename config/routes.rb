@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts
-  devise_for :users , post: 'users'
-  get 'welcome/index'
-  root 'welcome#index'
+  resources :posts do
+    member do
+      patch "upvote", to: "posts#upvote"
+    end
+    # post 'comments', to: 'comments#create'
+    resources :comments, only: [:create, :destroy]
+  end
 
+  devise_for :users , post: 'users'
+
+  get 'welcome/index'
+  get '/search', to: 'posts#search'
+  root 'welcome#index'
 end

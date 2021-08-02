@@ -1,3 +1,14 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body.posts.search{
+  .friendpost{
+    display:flex;
+    flex-direction: row;
+  }
+  .fpost{
+    width: 17rem;
+    margin-right: 3%;
+  }
+  .b1{
+    margin-left: 4%
+  }
+
+}

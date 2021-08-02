@@ -1,15 +1,37 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+
+  respond_to :js, :html, :json
+
+  def search
+    @user = User.find_by_email(params[:search])
+    @posts = Post.where(user_id: @user)
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    if current_user.voted_up_on? @post
+      @post.unvote_by current_user
+    else
+      @post.upvote_by current_user
+    end
+    render "vote.js.erb"
+  end
 
   # GET /posts or /posts.json
   def index
     @posts = current_user.posts
+    # @user = User.find_by_email(params[:search])
+    # @posts = Post.where(user_id: @user)
+
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     # @post = Post.all
+    @comment = Comment.new
+    @comments = @post.comments.order("created_at DESC")
   end
 
   # GET /posts/new
@@ -23,6 +45,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
+
     @post = current_user.posts.build(post_params)
 
     respond_to do |format|
@@ -62,6 +85,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+
     end
 
     # Only allow a list of trusted parameters through.

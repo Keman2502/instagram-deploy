@@ -8,6 +8,14 @@
   <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
     <ul class="navbar-nav">
     <% if user_signed_in?%>
+
+      <li class="nav-item">
+      <%= form_with url: '/search', method: :get, local: true do |f| %>
+      <%= f.text_field :q, name: "search", id: :q %>
+      <%= f.submit "Search" , class:"btn btn-outline-success" %>
+      <% end %>
+      </li>
+
       <li class="nav-item me-4 pt-2">
           <%= link_to 'Add Post', new_post_path , class: "nav-link btn btn-primary"%>
       </li>
@@ -16,10 +24,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <%= image_tag(current_user.avatar_thumbnail) %>
         </a>
-      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-        <li style= "color:"><a><%= link_to 'Edit Profile', edit_user_registration_path , class: "nav-link dropdown-item"%> </a></li>
-        <li><a><%= link_to 'Sign Out', destroy_user_session_path  , method: :delete, class: "nav-link dropdown-item"%></a></li>
-      </ul>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+          <li style= "color:"><a><%= link_to 'Edit Profile', edit_user_registration_path , class: "nav-link dropdown-item"%> </a></li>
+          <li><a><%= link_to 'Sign Out', destroy_user_session_path  , method: :delete, class: "nav-link dropdown-item"%></a></li>
+        </ul>
       </li>
     <% else %>
       <li class="nav-item">

@@ -10,8 +10,16 @@
 <div class="card">
   <%= image_tag(post.thumbnail(0) , class: "img-thumbnail center")%>
   <div class="card-body">
-    <p class="card-text"><%= post.body %></p>
-    <%= link_to 'Show', post ,class:"btn btn-dark b1" %>
+    <p class="card-text"><strong>Caption: </strong><%=  post.body %></p>
+    <div class="d-flex flex-row">
+    <%= render "posts/votes_score", post: post %>
+    <i class="fa fa-heart" style="font-size:28px;color:red; margin-left: 2%"></i>
+    </div>
+    <br>
+    <div class="d-flex flex-row">
+    <%= render "posts/upvote_link", post: post ,class:"btn btn-dark"%>
+    <p><%= link_to 'Show', post ,class:"btn btn-dark b1" %></p>
+    </div>
   </div>
 </div>
 <% end%>
