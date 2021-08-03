@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def search
     @user = User.find_by_email(params[:search])
+    #@user = User.where("email like ? " , "%#{'eman'}%")
     @posts = Post.where(user_id: @user)
   end
 

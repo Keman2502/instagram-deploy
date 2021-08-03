@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get '/search', to: 'posts#search'
   root 'welcome#index'
+
+  resource :friendships, only: [:create , :destroy]
 end
