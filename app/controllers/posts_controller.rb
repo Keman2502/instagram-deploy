@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   respond_to :js, :html, :json
 
   def search
-    @user = User.find_by_email(params[:search])
-    #@user = User.where("email like ? " , "%#{'eman'}%")
+    check= User.where("email like ?","%#{params[:search]}%").pluck(:email)
+    @user = User.find_by_email(check[0])
     @posts = Post.where(user_id: @user)
   end
 
@@ -79,6 +79,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
+
     end
   end
 

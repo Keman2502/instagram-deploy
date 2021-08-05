@@ -4,6 +4,28 @@
   <%# <%= image_tag(current_user.avatar_thumbnail) %>
 <%# <%end %>
 <%# </div> %>
+<div class="container d-flex">
+  <div><%= image_tag(current_user.avatar_thumbnail, class:"xyz")%></div>
+  <div class="userinfotable">
+  <strong><%= current_user.email.split('@')[0].capitalize%></strong>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Posts</th>
+        <th>Followers</th>
+        <th>Following</th>
+      </tr>
+      <thead>
+      <tbody>
+        <tr>
+          <td><%= current_user.posts.all.count%></td>
+          <td><%= current_user.followers.all.count %></td>
+          <td><%= current_user.following.all.count%></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+</div>
 
 <div class="container mypost">
 <% @post.each do |post| %>

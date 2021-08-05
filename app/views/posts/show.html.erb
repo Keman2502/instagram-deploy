@@ -13,7 +13,7 @@
 
 <%= link_to 'Back', root_path %>
 <% if current_user == @post.user%>
-  |<%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Delete', post_path ,
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
@@ -25,16 +25,17 @@
 <%= f.text_field :body %>
 <%= f.submit "Comment" %>
 <%end%>
+<br>
 
 
 <% @comments.each do |comment|%>
-  [<%= comment.created_at.strftime("%I:%M %p")%>]
-  <%= comment.user.email%>
+  [<%= comment.created_at.strftime("%I:%M:%S")%>]
+  <strong><%= comment.user.email.split('@')[0].capitalize%>:</strong>
   <% if current_user && current_user == comment.user || current_user == @post.user%>
-    <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>
+    <%= comment.body%>
+    <%= link_to "Delete", post_comment_path(@post, comment), method: :delete  , class: "btn btn-danger btn-sm ms-2"%>
   <% end %>
   <hr/>
-  <%= comment.body%>
   <br/>
   <br/>
 <%end%>
