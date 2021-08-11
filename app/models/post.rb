@@ -17,5 +17,4 @@ class Post < ApplicationRecord
       errors.add(:image, "is missing")
     end
   end
-
 end

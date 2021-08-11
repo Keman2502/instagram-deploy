@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dsrkduvyn
+  api_key: '641572319761376'
+  api_secret: LdT_l2IsBNnQPLOLZNhOijtciCc
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dsrkduvyn
+  api_key: '641572319761376'
+  api_secret: LdT_l2IsBNnQPLOLZNhOijtciCc
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dsrkduvyn
+  api_key: '641572319761376'
+  api_secret: LdT_l2IsBNnQPLOLZNhOijtciCc
+  enhance_image_tag: true
+  static_file_support: false
