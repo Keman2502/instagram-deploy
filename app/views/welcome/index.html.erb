@@ -1,11 +1,7 @@
-<%#
-<div class="container profile">
-<% if user_signed_in?%>
-  <%# <%= image_tag(current_user.avatar_thumbnail) %>
-<%# <%end %>
-<%# </div> %>
 <div class="container d-flex">
-  <div><%= image_tag(current_user.avatar_thumbnail, class:"xyz")%></div>
+  <div>
+    <%= image_tag(current_user.avatar_thumbnail, class:"xyz")%>
+  </div>
   <div class="userinfotable">
   <strong><%= current_user.email.split('@')[0].capitalize%></strong>
     <table class="table">
@@ -15,7 +11,7 @@
         <th>Followers</th>
         <th>Following</th>
       </tr>
-      <thead>
+      </thead>
       <tbody>
         <tr>
           <td><%= current_user.posts.all.count%></td>

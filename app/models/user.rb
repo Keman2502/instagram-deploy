@@ -12,9 +12,7 @@ class User < ApplicationRecord
   after_commit :add_default_avatar, on: %i[create update]
 
   has_many :active_friendships, class_name:"Friendship", foreign_key: "follower_id", dependent: :destroy
-
   has_many :passive_friendships, class_name:"Friendship", foreign_key: "follower_id", dependent: :destroy
-
   has_many :following, through: :active_friendships, source: :followed
   has_many :followers, through: :passive_friendships, source: :follower
 

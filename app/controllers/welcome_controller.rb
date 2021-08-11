@@ -6,7 +6,4 @@ class WelcomeController < ApplicationController
       @post = current_user.posts.order("created_at DESC")
     end
   end
-
-  def story
-  end
 end

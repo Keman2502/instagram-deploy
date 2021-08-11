@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :posts do
     member do
       patch "upvote", to: "posts#upvote"
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
   devise_for :users , post: 'users'
 
   get 'welcome/index'
-  get '/search', to: 'posts#search'
   root 'welcome#index'
 
   get '/story', to: 'welcome#story'
